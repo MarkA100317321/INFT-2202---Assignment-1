@@ -1,3 +1,10 @@
+/*
+Name:         Mark Ali
+File:         productStorage.jsx
+Date:         8 Feb 2026
+Description:  Assignment 1 - Product Listing and Entry. This provides local storage for the product data. 
+*/
+
 // TODO: Implement localStorage-based persistence using JSON.parse / JSON.stringify.
 // Use this key for storage:
 export const STORAGE_KEY = 'a1_products';
