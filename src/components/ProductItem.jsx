@@ -1,9 +1,16 @@
+/*
+Name:         Mark Ali
+File:         ProductItem.jsx
+Date:         8 Feb 2026
+Description:  Assignment 1 - Product Listing and Entry. This component displays a single product inside a bootstrap card, essentially is for the layout/presentation. 
+*/
+
 import React from 'react'
 
 export default function ProductItem({ product, onDelete }){
   // TODO: render a Bootstrap card with product details and a Delete button
   
-  
+//  Delete function to be called when the user clicks the delete button. Then returns the product ID.  
 function handleDelete() {
     onDelete(product.id)
   }

@@ -1,5 +1,8 @@
 /*
-mark
+Name:         Mark Ali
+File:         App.jsx
+Date:         8 Feb 2026
+Description:  Assignment 1 - Product Listing and Entry. Main container for the application, which manages the full product list and controls the current view.
 */
 
 import React, { useMemo, useState, useEffect } from 'react'
@@ -7,19 +10,19 @@ import ProductForm from './components/ProductForm'
 import ProductList from './components/ProductList'
 import { getAllProducts, addProduct, removeProduct } from "./storage/productStorage"
 
-
 export default function App(){
   // TODO: start with [] and consider hydrating from storage once storage helpers are implemented
+  //  Holds the list of products entered by the user.
   const [items, setItems] = useState([])
 
   // Optional: toggle between views; start on 'list'
   const [view, setView] = useState('list') // 'list' | 'form'
 
+  //  Loads saved products from productStorage when the app first opens. 
   useEffect(function () {
     const saved = getAllProducts()
     setItems(saved)
   }, [])
-
 
   // TODO: compute total from items
   const total = useMemo(() => {
@@ -35,7 +38,10 @@ export default function App(){
         
     const newProduct = {
       id: Date.now(),
-      ...data
+      name: data.name,
+      price: data.price,
+      stock: data.stock,
+      description: data.description
     }
 
     addProduct(newProduct)
@@ -45,9 +51,6 @@ export default function App(){
 
     setView("list")
   }
-
-
-  
 
   function handleDelete(id){
     // TODO: remove from storage, then update state

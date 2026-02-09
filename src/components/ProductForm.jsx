@@ -1,5 +1,12 @@
-import React from 'react'
+/*
+Name:         Mark Ali
+File:         ProductForm.jsx
+Date:         8 Feb 2026
+Description:  Assignment 1 - Product Listing and Entry. This component contains a controlled form with various input fields regarding the product.
+              Contains simple error checking for numeric and string values.
+*/
 
+import React from 'react'
 // TODO: Use useState to manage a model with fields:
 // { name: '', price: '', stock: '', description: '' }
 // TODO: Create a validate() that sets an errors object and returns boolean:
@@ -12,7 +19,7 @@ export default function ProductForm({ onSubmit }){
   // const [model, setModel] = ...
   // const [errors, setErrors] = ...
 
-
+  //  Default starting states for each field.
   const [model, setModel] = React.useState({
     name: "",
     price: "",
@@ -20,19 +27,29 @@ export default function ProductForm({ onSubmit }){
     description: ""
   })
 
-
+  //  Tracks validation and sets value for error messages.
   const [errors, setErrors] = React.useState({})
 
+  //  Handles the updates to each field.
   function handleChange(e) {
     const name = e.target.name
     const value = e.target.value
 
-    setModel(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setModel(function(prev) {
+      const updated = {
+        name: prev.name,
+        price: prev.price,
+        stock: prev.stock,
+        description: prev.description
+      }
+
+      updated[name] = value
+      return updated
+    })
   }
 
+  //  Validation for each field on the form. Contains trims, checks for blanks, checks numbers are positive. 
+  //  Lets the user know what is required. 
   function validate() {
     const newErrors = {}
 
@@ -66,7 +83,7 @@ export default function ProductForm({ onSubmit }){
     return Object.keys(newErrors).length === 0
   }
 
-
+  // Handles the form submission. Normalizes the data, sends, and then resets the form.
   function handleSubmit(e){
     e.preventDefault()
     // console.log('Submitting:', model)
